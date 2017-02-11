@@ -1,0 +1,72 @@
+import org.openhab.core.library.types.*
+import org.openhab.core.persistence.*
+import org.openhab.model.script.actions.*
+
+var float elevation
+var float lastElevation
+
+rule "Daylight Calculation"
+when
+    Time cron "0 * * * * ?"
+then
+    lastElevation = elevation
+    elevation = (SunElevation.state as DecimalType).floatValue
+
+    if (null == lastElevation) {
+        return true
+    }
+
+    // Sun is setting past elevation 15.
+    if (lastElevation > 15 && elevation <= 15) {
+        BarLight.sendCommand(ON)
+        JarLight.sendCommand(ON)
+    }
+
+    // Sun is setting past elevation 10.
+    if (lastElevation > 10 && elevation <= 10) {
+        TableLight.sendCommand(100)
+        DeskLight.sendCommand(ON)
+    }
+
+    // Sun is setting past elevation 5.
+    if (lastElevation > 5 && elevation <= 5) {
+        FrontOutdoorLight.sendCommand(ON)
+        BackOutdoorLight.sendCommand(ON)
+    }
+
+    // Sun is rising past elevation 0.
+    if (lastElevation < 0 && elevation >= 0) {
+        FrontOutdoorLight.sendCommand(OFF)
+        BackOutdoorLight.sendCommand(OFF)
+    }
+
+    // Sun is rising past elevation 10.
+    if (lastElevation < 10 && elevation >= 10) {
+        BarLight.sendCommand(OFF)
+    }
+end
+
+rule "Morning"
+when
+    Time cron "0 45 6 * * ?"
+then
+    if (elevation < 5) {
+        BarLight.sendCommand(ON)
+    }
+end
+
+rule "Late Night"
+when
+    Time cron "0 0 2 * * ?"
+then
+    BarLight.sendCommand(OFF)
+    TableLight.sendCommand(OFF)
+    JarLight.sendCommand(OFF)
+end
+
+rule "Late Late Night"
+when
+    Time cron "0 0 3 * * ?"
+then
+    DeskLight.sendCommand(OFF)
+end

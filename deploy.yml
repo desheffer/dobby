@@ -1,0 +1,10 @@
+---
+
+- name: Deploy dobby
+  hosts: dobby
+  become: true
+  roles:
+    - common
+    - ddns
+    - openhab2
+    - webserver

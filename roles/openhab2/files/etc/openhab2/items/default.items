@@ -1,0 +1,26 @@
+String VoiceCommand
+
+/* Groups */
+Group All
+Group Home      "Home"      <house>       (All)
+Group Weather   "Weather"   <temperature> (All)
+Group Astronomy "Astronomy" <incline>     (All)
+
+/* Home */
+Switch FrontOutdoorLight "Front Door Light" <switch> (Home) { channel="zwave:device:controller:node2:switch_binary" }
+Switch BackOutdoorLight  "Back Door Light"  <switch> (Home) { channel="zwave:device:controller:node3:switch_binary" }
+Switch BarLight          "Bar Lights"       <switch> (Home) { channel="zwave:device:controller:node4:switch_binary" }
+Dimmer TableLight        "Table Lamp"       <switch> (Home) { channel="zwave:device:controller:node5:switch_dimmer" }
+Switch JarLight          "Jar Lights"       <switch> (Home) { channel="zwave:device:controller:node6:switch_binary" }
+Switch DeskLight         "Desk Lamp"        <switch> (Home) { channel="zwave:device:controller:node7:switch_binary" }
+
+/* Weather */
+Number WeatherTemperature "Temperature [%.2f °F]" <temperature> (Weather) { weather="locationId=home, type=temperature, property=current, unit=fahrenheit" }
+Number WeatherHumidity    "Humidity [%d %%]"      <humidity>    (Weather) { weather="locationId=home, type=atmosphere, property=humidity" }
+String WeatherCondition   "Condition [%s]"        <wind>        (Weather) { weather="locationId=home, type=condition, property=text" }
+
+/* Astronomy */
+Number SunElevation "Sun Elevation [%.2f]"  <incline> (Astronomy) { channel="astro:sun:home:position#elevation" }
+Number SunAzimuth   "Sun Azimuth [%.2f]"    <incline> (Astronomy) { channel="astro:sun:home:position#azimuth" }
+String Sunrise      "Sunrise [%1$tH:%1$tM]" <sunrise> (Astronomy) { channel="astro:sun:home:rise#start" }
+String Sunset       "Sunset [%1$tH:%1$tM]"  <sunset>  (Astronomy) { channel="astro:sun:home:set#start" }

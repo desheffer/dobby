@@ -1,0 +1,39 @@
+---
+
+- name: Set hostname
+  hostname:
+    name: "{{ inventory_hostname_short }}"
+
+- name: Add /etc/hosts entry for hostname
+  lineinfile:
+    dest: /etc/hosts
+    state: present
+    regexp: "^127.0.1.1\\s"
+    line: "127.0.1.1	{{ inventory_hostname_short }}.localdomain {{ inventory_hostname_short }}"
+
+- name: Sync /etc/issue.net
+  copy:
+    src: etc/issue.net
+    dest: /etc/issue.net
+
+- name: Upgrade packages
+  apt:
+    autoremove: yes
+    upgrade: dist
+    update_cache: yes
+    cache_valid_time: 3600
+
+- name: Install fake hardware clock and NTP
+  apt:
+    name: "{{ item }}"
+  with_items:
+    - fake-hwclock
+    - ntp
+
+- name: Set timezone
+  timezone:
+    name: "{{ timezone }}"
+
+- name: Install Vim
+  apt:
+    name: vim

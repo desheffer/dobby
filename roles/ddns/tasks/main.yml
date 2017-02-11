@@ -1,0 +1,13 @@
+---
+
+- name: Set up DDNS
+  cron:
+    name: ddns
+    minute: "*/5"
+    job: "wget -O - '{{ ddns.update_url }}' > /tmp/ddns.log 2>&1 &"
+  register: ddns_cron
+
+- name: Update DDNS
+  uri:
+    url: "{{ ddns.update_url }}"
+  when: ddns_cron.changed

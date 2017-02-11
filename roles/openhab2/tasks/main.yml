@@ -1,0 +1,38 @@
+---
+
+- include: java.yml
+
+- name: Add openHAB 2 repository key
+  apt_key:
+    url: https://bintray.com/user/downloadSubjectPublicKey?username=openhab
+
+- name: Add openHAB 2 repository
+  apt_repository:
+    repo: deb http://dl.bintray.com/openhab/apt-repo2 stable main
+    update_cache: yes
+
+- name: Install openHAB 2 and addons
+  apt:
+    name: "{{ item }}"
+    force: yes
+  with_items:
+    - openhab2
+    - openhab2-addons
+
+- name: Add openhab user to the dialout group
+  user:
+    name: openhab
+    append: yes
+    groups: dialout
+
+- name: Copy /etc/openhab2 directory
+  copy:
+    src: etc/openhab2/
+    dest: /etc/openhab2/
+  tags:
+    - configuration
+
+- name: Start openHAB 2 at boot
+  service:
+    name: openhab2
+    enabled: true

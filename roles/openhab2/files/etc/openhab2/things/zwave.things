@@ -1,0 +1,1 @@
+Bridge zwave:serial_zstick:controller [ port="/dev/ttyUSB0", controller_master="true", heal_time="2" ]

@@ -1,0 +1,69 @@
+---
+
+- name: Purge apache2
+  apt:
+    name: apache2*
+    purge: yes
+    state: absent
+
+- name: Install nginx
+  apt:
+    name: nginx-light
+
+- name: Stat sites-enabled
+  stat:
+    path: /etc/nginx/sites-enabled
+  register: sites_enabled
+
+- name: Remove the default web root
+  file:
+    path: /var/www/html
+    state: absent
+  when: sites_enabled.stat.isdir is defined and sites_enabled.stat.isdir
+
+- name: Remove the default sites-enabled directory
+  file:
+    path: /etc/nginx/sites-enabled
+    state: absent
+  when: sites_enabled.stat.isdir is defined and sites_enabled.stat.isdir
+
+- name: Sync /etc/nginx/sites-available directory
+  synchronize:
+    src: etc/nginx/sites-available/
+    dest: /etc/nginx/sites-available/
+    archive: no
+    delete: yes
+    recursive: yes
+    times: yes
+  notify: Restart nginx
+  tags:
+    - configuration
+
+- name: Copy htpasswd file
+  copy:
+    src: etc/nginx/home.htpasswd
+    dest: /etc/nginx/home.htpasswd
+  notify: Restart nginx
+  tags:
+    - configuration
+
+- name: Create web root for each vhost
+  file:
+    path: "/var/www/{{ item }}"
+    state: directory
+  with_items: "{{ webserver.vhosts }}"
+  notify: Restart nginx
+  tags:
+    - configuration
+
+- name: Link sites-enabled directory
+  file:
+    path: /etc/nginx/sites-enabled
+    src: "/etc/nginx/sites-available/{{ item }}"
+    state: link
+  with_items: "{{ webserver.sites }}"
+  notify: Restart nginx
+  tags:
+    - configuration
+
+- include: certbot.yml

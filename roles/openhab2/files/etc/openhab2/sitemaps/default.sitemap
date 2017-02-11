@@ -1,0 +1,22 @@
+sitemap default label="Main Menu"
+{
+    Frame label="Home" {
+        Switch item=FrontOutdoorLight
+        Switch item=BackOutdoorLight
+        Switch item=BarLight
+        Slider item=TableLight
+        Switch item=JarLight
+        Switch item=DeskLight
+    }
+    Frame label="Weather" {
+        Text item=WeatherTemperature
+        Text item=WeatherHumidity
+        Text item=WeatherCondition
+    }
+    Frame label="Astro" {
+        Text item=SunElevation
+        Text item=SunAzimuth
+        Text item=Sunrise
+        Text item=Sunset
+    }
+}
