@@ -29,6 +29,8 @@
   copy:
     src: etc/openhab2/
     dest: /etc/openhab2/
+    owner: openhab
+    group: openhab
   tags:
     - configuration
 
