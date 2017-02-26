@@ -7,12 +7,12 @@ Group Weather   "Weather"   <temperature> (All)
 Group Astronomy "Astronomy" <incline>     (All)
 
 /* Home */
-Switch FrontOutdoorLight "Front Door Light" <switch> (Home) { channel="zwave:device:controller:node2:switch_binary" }
-Switch BackOutdoorLight  "Back Door Light"  <switch> (Home) { channel="zwave:device:controller:node3:switch_binary" }
-Switch BarLight          "Bar Lights"       <switch> (Home) { channel="zwave:device:controller:node4:switch_binary" }
-Dimmer TableLight        "Table Lamp"       <switch> (Home) { channel="zwave:device:controller:node5:switch_dimmer" }
-Switch JarLight          "Jar Lights"       <switch> (Home) { channel="zwave:device:controller:node6:switch_binary" }
-Switch DeskLight         "Desk Lamp"        <switch> (Home) { channel="zwave:device:controller:node7:switch_binary" }
+Switch FrontOutdoorLight "Front Door Light" <switch> (Home) ["Lighting"] { channel="zwave:device:controller:node2:switch_binary" }
+Switch BackOutdoorLight  "Back Door Light"  <switch> (Home) ["Lighting"] { channel="zwave:device:controller:node3:switch_binary" }
+Switch BarLight          "Bar Lights"       <switch> (Home) ["Lighting"] { channel="zwave:device:controller:node4:switch_binary" }
+Dimmer TableLight        "Table Lamp"       <switch> (Home) ["Lighting"] { channel="zwave:device:controller:node5:switch_dimmer" }
+Switch JarLight          "Jar Lights"       <switch> (Home) ["Lighting"] { channel="zwave:device:controller:node6:switch_binary" }
+Switch DeskLight         "Desk Lamp"        <switch> (Home) ["Lighting"] { channel="zwave:device:controller:node7:switch_binary" }
 
 /* Weather */
 Number WeatherTemperature "Temperature [%.2f °F]" <temperature> (Weather) { weather="locationId=home, type=temperature, property=current, unit=fahrenheit" }
