@@ -8,7 +8,7 @@
 
 - name: Add openHAB 2 repository
   apt_repository:
-    repo: deb http://dl.bintray.com/openhab/apt-repo2 stable main
+    repo: deb https://dl.bintray.com/openhab/apt-repo2 stable main
     update_cache: yes
 
 - name: Install openHAB 2 and addons
