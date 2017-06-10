@@ -10,7 +10,7 @@ Current hardware:
 
 Download a recent Debian image from https://beagleboard.org/latest-images:
 
-    wget -O debian.img.xz https://rcn-ee.com/rootfs/2017-01-23/flasher/BBB-eMMC-flasher-debian-8.7-console-armhf-2017-01-23-2gb.img.xz
+    wget -O debian.img.xz https://rcn-ee.com/rootfs/2017-06-08/flasher/BBB-eMMC-flasher-debian-8.8-console-armhf-2017-06-08-2gb.img.xz
 
 Prepare the SD card:
 
