@@ -19,12 +19,13 @@ Prepare the SD card:
     diskutil unmountDisk /dev/disk2
     xzcat debian.img.xz | sudo dd of=/dev/disk2
 
-Boot the SD card to run the eMMC flasher.
+Boot the SD card to run the eMMC flasher. Reboot when finished.
 
-Reboot and run the Ansible playbook:
+Run the Ansible playbook:
 
     virtualenv venv
     source venv/bin/activate
     pip install -r requirements.txt
 
+    ./init.sh
     ./deploy.sh
