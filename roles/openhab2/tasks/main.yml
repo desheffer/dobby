@@ -1,6 +1,6 @@
 ---
 
-- include: java.yml
+- import_tasks: java.yml
 
 - name: Add openHAB 2 repository key
   apt_key:

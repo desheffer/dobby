@@ -66,4 +66,4 @@
   tags:
     - configuration
 
-- include: certbot.yml
+- import_tasks: certbot.yml

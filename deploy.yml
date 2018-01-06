@@ -1,7 +1,7 @@
 ---
 
-- name: Deploy dobby
-  hosts: dobby
+- name: Deploy
+  hosts: all
   become: true
   roles:
     - common

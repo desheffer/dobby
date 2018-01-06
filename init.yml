@@ -1,7 +1,7 @@
 ---
 
-- name: Initialize dobby
-  hosts: dobby
+- name: Initialize
+  hosts: all
 
   tasks:
     - name: Set up SSH authorized key
