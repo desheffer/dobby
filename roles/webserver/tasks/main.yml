@@ -47,15 +47,6 @@
   tags:
     - configuration
 
-- name: Create web root for each vhost
-  file:
-    path: "/var/www/{{ item }}"
-    state: directory
-  with_items: "{{ webserver.vhosts }}"
-  notify: Restart nginx
-  tags:
-    - configuration
-
 - name: Link sites-enabled directory
   file:
     path: /etc/nginx/sites-enabled
