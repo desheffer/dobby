@@ -25,6 +25,24 @@
     append: yes
     groups: dialout
 
+- name: Copy /var/lib/openhab2/uuid
+  copy:
+    src: var/lib/openhab2/uuid
+    dest: /var/lib/openhab2/uuid
+    owner: openhab
+    group: openhab
+  tags:
+    - configuration
+
+- name: Copy /var/lib/openhab2/openhabcloud
+  copy:
+    src: var/lib/openhab2/openhabcloud/
+    dest: /var/lib/openhab2/openhabcloud/
+    owner: openhab
+    group: openhab
+  tags:
+    - configuration
+
 - name: Copy /etc/openhab2 directory
   copy:
     src: etc/openhab2/
