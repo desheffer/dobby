@@ -8,4 +8,4 @@ if [ ! -z "$1" ]; then
 fi
 
 ansible-playbook $FLAGS deploy.yml \
-    --vault-password-file ~/.vault_pass
+    --vault-id ~/.vault_pass
