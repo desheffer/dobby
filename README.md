@@ -27,5 +27,5 @@ Run the Ansible playbook:
     source venv/bin/activate
     pip install -r requirements.txt
 
-    ./init.sh
+    ./init.sh # default password is 'temppwd'
     ./deploy.sh

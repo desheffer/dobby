@@ -2,6 +2,7 @@
 
 - name: Initialize
   hosts: all
+  become: true
 
   tasks:
     - name: Set up SSH authorized key
@@ -19,14 +20,8 @@
     - name: Disallow password authentication
       lineinfile:
         dest: /etc/ssh/sshd_config
-        regexp: "^#?PasswordAuthentication"
+        regexp: "^#?PasswordAuthentication "
         line: PasswordAuthentication no
 
     - name: Clear password for debian user
       command: passwd -d debian
-
-    - name: Reboot
-      command: reboot
-      async: 1
-      poll: 0
-      ignore_errors: true
