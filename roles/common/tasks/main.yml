@@ -11,6 +11,10 @@
     regexp: "^#?PasswordAuthentication "
     line: PasswordAuthentication no
 
+- name: Set timezone
+  timezone:
+    name: "{{ timezone }}"
+
 - name: Set hostname
   hostname:
     name: "{{ inventory_hostname_short }}"
