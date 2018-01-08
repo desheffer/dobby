@@ -1,6 +1,8 @@
 ---
 
-- import_tasks: java.yml
+- name: Install Java
+  apt:
+    name: openjdk-9-jre-headless
 
 - name: Add openHAB 2 repository key
   apt_key:
