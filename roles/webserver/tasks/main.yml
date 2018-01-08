@@ -1,11 +1,5 @@
 ---
 
-- name: Purge apache2
-  apt:
-    name: apache2*
-    purge: yes
-    state: absent
-
 - name: Install nginx
   apt:
     name: nginx-light

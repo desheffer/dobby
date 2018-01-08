@@ -1,9 +1,5 @@
 ---
 
-- name: Install cURL
-  apt:
-    name: curl
-
 - name: Install dnsutils
   apt:
     name: dnsutils

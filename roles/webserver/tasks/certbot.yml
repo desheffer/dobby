@@ -1,12 +1,5 @@
 ---
 
-- name: Add jessie-backports repository
-  apt_repository:
-    repo: deb http://ftp.debian.org/debian jessie-backports main
-    update_cache: yes
-  tags:
-    - cert
-
 - name: Install certbot
   apt:
     name: certbot

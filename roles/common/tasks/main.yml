@@ -1,5 +1,16 @@
 ---
 
+- name: Set up SSH authorized key
+  authorized_key:
+    key: "{{ lookup('file', '~/.ssh/id_rsa.pub') }}"
+    user: pi
+
+- name: Disallow password authentication
+  lineinfile:
+    dest: /etc/ssh/sshd_config
+    regexp: "^#?PasswordAuthentication "
+    line: PasswordAuthentication no
+
 - name: Set hostname
   hostname:
     name: "{{ inventory_hostname_short }}"
@@ -11,32 +22,12 @@
     regexp: "^127.0.1.1\\s"
     line: "127.0.1.1	{{ inventory_hostname_short }}.localdomain {{ inventory_hostname_short }}"
 
-- name: Sync /etc/issue.net
-  copy:
-    src: etc/issue.net
-    dest: /etc/issue.net
-
 - name: Upgrade packages
   apt:
     autoremove: yes
     upgrade: dist
     update_cache: yes
     cache_valid_time: 0
-
-- name: Install https download transport for APT
-  apt:
-    name: apt-transport-https
-
-- name: Install fake hardware clock and NTP
-  apt:
-    name: "{{ item }}"
-  with_items:
-    - fake-hwclock
-    - ntp
-
-- name: Set timezone
-  timezone:
-    name: "{{ timezone }}"
 
 - name: Install Vim
   apt:
