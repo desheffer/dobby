@@ -3,7 +3,6 @@
 - name: Install certbot
   apt:
     name: certbot
-    default_release: jessie-backports
   tags:
     - cert
 
