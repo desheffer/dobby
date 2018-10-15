@@ -15,11 +15,10 @@
 
 - name: Install openHAB 2 and addons
   apt:
-    name: "{{ item }}"
+    name:
+      - openhab2
+      - openhab2-addons
     force: yes
-  with_items:
-    - openhab2
-    - openhab2-addons
 
 - name: Add openhab user to the dialout group
   user:

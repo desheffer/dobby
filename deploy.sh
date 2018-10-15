@@ -1,13 +1,18 @@
 #!/bin/bash
 
-cd "$(dirname "$0")"
+set -e
+
+cd "$(dirname "${0}")"
+
+./init.sh --needed
 
 FLAGS=""
-if [ "$1" == "--ask-pass" ]; then
+if [ "${1}" == "--ask-pass" ]; then
     FLAGS="--ask-pass"
-elif [ ! -z "$1" ]; then
-    FLAGS="-t $1"
+elif [ ! -z "${1}" ]; then
+    FLAGS="-t ${1}"
 fi
 
-ansible-playbook $FLAGS deploy.yml \
+source venv/bin/activate
+ansible-playbook ${FLAGS} deploy.yml \
     --vault-id ~/.vault_pass
