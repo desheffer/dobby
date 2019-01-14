@@ -26,10 +26,8 @@
     regexp: "^127.0.1.1\\s"
     line: "127.0.1.1	{{ inventory_hostname_short }}.localdomain {{ inventory_hostname_short }}"
 
-- name: Upgrade packages
+- name: Update package cache
   apt:
-    autoremove: yes
-    upgrade: dist
     update_cache: yes
     cache_valid_time: 0
 
