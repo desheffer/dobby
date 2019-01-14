@@ -7,5 +7,5 @@
 - name: Set up DDNS
   cron:
     name: ddns
-    minute: "*/5"
-    job: "{{ ddns.update_command }} > /tmp/ddns.log 2>&1 &"
+    minute: "0"
+    job: "{{ ddns.update_command }}"
