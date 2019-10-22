@@ -3,16 +3,14 @@
 cd ~/Downloads
 
 # Defaults:
-DISK="/dev/rdisk2"
+DISK="/dev/mmcblk0"
 WIRELESS_SSID=""
 WIRELESS_PASSWORD=""
-VOLUME="/Volumes/boot"
 
-diskutil list
-
+lsblk
 echo
 
-read -p "Name of disk to write [${DISK}]: "
+read -p "Disk to write [${DISK}]: "
 [ ! -z "${REPLY}" ] && DISK="${REPLY}"
 
 read -p "Wireless SSID [${WIRELESS_SSID}]: "
@@ -29,16 +27,12 @@ if [ ! -f raspbian.zip ]; then
 fi
 
 echo
-echo "Unmounting disk..."
-
-diskutil unmountDisk "${DISK}"
-
-echo
 echo "Writing disk image..."
 
-unzip -p raspbian.zip | sudo dd bs=1m of="${DISK}"
+unzip -p raspbian.zip | sudo dd bs=1M of="${DISK}"
 sleep 5
 
+VOLUME="$(lsblk -no MOUNTPOINT "${DISK}p1")"
 if [ ! -d "${VOLUME}" ]; then
     echo
     echo "An error occurred."
@@ -65,7 +59,7 @@ touch "${VOLUME}/ssh"
 echo
 echo "Ejecting disk..."
 
-diskutil eject "${DISK}"
+umount -q "${DISK}p"*
 
 echo
 echo "Done! You may now remove the disk and insert it into the Raspberry Pi."
