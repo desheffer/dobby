@@ -1,1 +1,1 @@
-dobby ansible_host=192.168.0.50 ansible_user=pi
+dobby ansible_host=192.168.1.50 ansible_user=pi

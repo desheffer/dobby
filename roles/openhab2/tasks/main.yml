@@ -2,7 +2,7 @@
 
 - name: Install Java
   apt:
-    name: openjdk-9-jre-headless
+    name: openjdk-8-jre-headless
 
 - name: Add openHAB 2 repository key
   apt_key:
@@ -16,8 +16,8 @@
 - name: Install openHAB 2 and addons
   apt:
     name:
-      - openhab2=2.3.*
-      - openhab2-addons=2.3.*
+      - openhab2=2.4.*
+      - openhab2-addons=2.4.*
     force: yes
 
 - name: Add openhab user to the dialout group
