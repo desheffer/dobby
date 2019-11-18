@@ -44,9 +44,8 @@
 - name: Link sites-enabled directory
   file:
     path: /etc/nginx/sites-enabled
-    src: "/etc/nginx/sites-available/{{ item }}"
+    src: /etc/nginx/sites-available/home
     state: link
-  with_items: "{{ webserver.sites }}"
   notify: Restart nginx
   tags:
     - configuration

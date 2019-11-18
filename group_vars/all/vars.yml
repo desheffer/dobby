@@ -2,7 +2,4 @@
 
 timezone: America/New_York
 webserver:
-  sites:
-    - home
-  vhosts:
-    - home.dougsheffer.com
+  vhost: home.dougsheffer.com

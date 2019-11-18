@@ -6,16 +6,10 @@
   tags:
     - cert
 
-- name: Find certificates
-  stat:
-    path: "/etc/letsencrypt/live/{{ item }}"
-  register: cert_stat
-  with_items: "{{ webserver.vhosts }}"
-
-- name: Obtain certificate for each vhost
-  command: "certbot certonly -n --standalone --pre-hook 'service nginx stop' --post-hook 'service nginx start' --agree-tos -m {{ certbot.email }} -d {{ item.item }}"
-  when: item.stat is not defined or not item.stat.exists
-  with_items: "{{ cert_stat.results }}"
+- name: Obtain certificate
+  command: "certbot certonly -n --standalone --pre-hook 'service nginx stop' --post-hook 'service nginx start' --agree-tos -m '{{ certbot.email }}' -d '{{ webserver.vhost }}'"
+  args:
+    creates: "/etc/letsencrypt/live/{{ webserver.vhost }}"
 
 - name: Schedule certificate renewal
   cron:
