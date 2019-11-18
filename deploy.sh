@@ -4,7 +4,12 @@ set -e
 
 cd "$(dirname "${0}")"
 
-./init.sh --needed
+if [ ! -d venv ]; then
+    virtualenv venv
+
+    source venv/bin/activate
+    pip install -r requirements.txt
+fi
 
 FLAGS=""
 if [ "${1}" == "--ask-pass" ]; then
