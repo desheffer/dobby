@@ -1,12 +1,8 @@
 sitemap default label="Main Menu"
 {
     Frame label="Home" {
-        Switch item=FrontOutdoorLight
-        Switch item=BackOutdoorLight
-        Switch item=BarLight
-        Slider item=TableLight
-        Switch item=JarLight
-        Switch item=DeskLight
+        Switch item=OfficeDeskLight
+        Slider item=OfficeFloorLight
     }
     Frame label="Weather" {
         Text item=WeatherTemperature
