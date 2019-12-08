@@ -8,7 +8,7 @@ Group Astronomy "Astronomy" <incline> (All)
 
 /* Home */
 Switch OfficeDeskLight "Office Desk Light" <switch> (Home) ["Lighting"] { channel="zwave:device:controller:node3:switch_binary" }
-Dimmer OfficeFloorLight "Office Floor Light" <switch> (Home) ["Lighting"] { channel="zwave:device:controller:node5:switch_dimmer" }
+Dimmer LivingRoomFloorLight "Living Room Floor Light" <switch> (Home) ["Lighting"] { channel="zwave:device:controller:node5:switch_dimmer" }
 
 Switch Unused1 "Unused 1" <switch> (Home) ["Lighting"] { channel="zwave:device:controller:node2:switch_binary" }
 Switch Unused2 "Unused 2" <switch> (Home) ["Lighting"] { channel="zwave:device:controller:node4:switch_binary" }

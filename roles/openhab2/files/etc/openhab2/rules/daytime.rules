@@ -23,7 +23,7 @@ then
 
     // Sunset at 5 degrees
     if (lastElevation > 5 && elevation <= 5) {
-        OfficeFloorLight.sendCommand(100)
+        LivingRoomFloorLight.sendCommand(100)
     }
 end
 
@@ -31,7 +31,7 @@ rule "Late Night"
 when
     Time cron "0 0 2 * * ?"
 then
-    OfficeFloorLight.sendCommand(0)
+    LivingRoomFloorLight.sendCommand(0)
 end
 
 rule "Late Late Night"
