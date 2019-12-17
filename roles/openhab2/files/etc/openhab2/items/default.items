@@ -1,21 +1,16 @@
 String VoiceCommand
 
-/* Groups */
-Group All
-Group Home "Home" <house> (All)
-Group Astronomy "Astronomy" <incline> (All)
+Switch OfficeDeskLight { channel="zwave:device:controller:node3:switch_binary" }
+Dimmer LivingRoomFloorLight { channel="zwave:device:controller:node5:switch_dimmer" }
+Color OfficeFloorLight { channel="lifx:colorlight:D073D52FEA35:color" }
+Dimmer OfficeFloorLightTemperature { channel="lifx:colorlight:D073D52FEA35:temperature" }
 
-/* Home */
-Switch OfficeDeskLight "Office Desk Light" <switch> (Home) ["Lighting"] { channel="zwave:device:controller:node3:switch_binary" }
-Dimmer LivingRoomFloorLight "Living Room Floor Light" <switch> (Home) ["Lighting"] { channel="zwave:device:controller:node5:switch_dimmer" }
+Switch Unused1 { channel="zwave:device:controller:node2:switch_binary" }
+Switch Unused2 { channel="zwave:device:controller:node4:switch_binary" }
+Switch Unused3 { channel="zwave:device:controller:node7:switch_binary" }
+Switch Unused4 { channel="zwave:device:controller:node6:switch_binary" }
 
-Switch Unused1 "Unused 1" <switch> (Home) ["Lighting"] { channel="zwave:device:controller:node2:switch_binary" }
-Switch Unused2 "Unused 2" <switch> (Home) ["Lighting"] { channel="zwave:device:controller:node4:switch_binary" }
-Switch Unused3 "Unused 3" <switch> (Home) ["Lighting"] { channel="zwave:device:controller:node7:switch_binary" }
-Switch Unused4 "Unused 4" <switch> (Home) ["Lighting"] { channel="zwave:device:controller:node6:switch_binary" }
-
-/* Astronomy */
-Number SunElevation "Sun Elevation [%.2f]" <incline> (Astronomy) { channel="astro:sun:home:position#elevation" }
-Number SunAzimuth "Sun Azimuth [%.2f]" <incline> (Astronomy) { channel="astro:sun:home:position#azimuth" }
-String Sunrise "Sunrise [%1$tH:%1$tM]" <sunrise> (Astronomy) { channel="astro:sun:home:rise#start" }
-String Sunset "Sunset [%1$tH:%1$tM]" <sunset> (Astronomy) { channel="astro:sun:home:set#start" }
+Number SunElevation { channel="astro:sun:home:position#elevation" }
+Number SunAzimuth { channel="astro:sun:home:position#azimuth" }
+String Sunrise { channel="astro:sun:home:rise#start" }
+String Sunset { channel="astro:sun:home:set#start" }

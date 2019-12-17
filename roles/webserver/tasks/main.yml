@@ -30,8 +30,6 @@
     recursive: yes
     times: yes
   notify: Restart nginx
-  tags:
-    - configuration
 
 - name: Copy htpasswd file
   copy:
@@ -47,7 +45,5 @@
     src: /etc/nginx/sites-available/home
     state: link
   notify: Restart nginx
-  tags:
-    - configuration
 
 - import_tasks: certbot.yml
