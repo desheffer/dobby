@@ -3,7 +3,6 @@ String VoiceCommand
 /* Groups */
 Group All
 Group Home "Home" <house> (All)
-Group Weather "Weather" <temperature> (All)
 Group Astronomy "Astronomy" <incline> (All)
 
 /* Home */
@@ -14,11 +13,6 @@ Switch Unused1 "Unused 1" <switch> (Home) ["Lighting"] { channel="zwave:device:c
 Switch Unused2 "Unused 2" <switch> (Home) ["Lighting"] { channel="zwave:device:controller:node4:switch_binary" }
 Switch Unused3 "Unused 3" <switch> (Home) ["Lighting"] { channel="zwave:device:controller:node7:switch_binary" }
 Switch Unused4 "Unused 4" <switch> (Home) ["Lighting"] { channel="zwave:device:controller:node6:switch_binary" }
-
-/* Weather */
-Number WeatherTemperature "Temperature [%.2f °F]" <temperature> (Weather) { weather="locationId=home, type=temperature, property=current, unit=fahrenheit" }
-Number WeatherHumidity "Humidity [%d %%]" <humidity> (Weather) { weather="locationId=home, type=atmosphere, property=humidity" }
-String WeatherCondition "Condition [%s]" <wind> (Weather) { weather="locationId=home, type=condition, property=text" }
 
 /* Astronomy */
 Number SunElevation "Sun Elevation [%.2f]" <incline> (Astronomy) { channel="astro:sun:home:position#elevation" }

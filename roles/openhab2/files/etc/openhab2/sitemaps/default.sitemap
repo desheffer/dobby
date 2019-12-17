@@ -4,11 +4,6 @@ sitemap default label="Main Menu"
         Switch item=OfficeDeskLight
         Slider item=LivingRoomFloorLight
     }
-    Frame label="Weather" {
-        Text item=WeatherTemperature
-        Text item=WeatherHumidity
-        Text item=WeatherCondition
-    }
     Frame label="Astro" {
         Text item=SunElevation
         Text item=SunAzimuth
