@@ -30,6 +30,8 @@
     recursive: yes
     times: yes
   notify: Restart nginx
+  tags:
+    - configuration
 
 - name: Copy htpasswd file
   copy:
