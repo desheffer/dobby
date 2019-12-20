@@ -1,13 +1,18 @@
 sitemap default label="Main Menu" {
     Frame label="Living Room" {
-        Switch item=LivingRoomFloorLight label="Floor Light"
-        Slider item=LivingRoomFloorLight label="Floor Light Intensity"
+        Text item=LivingRoomFloorLight label="Floor Light" icon="light" {
+            Switch item=LivingRoomFloorLight label="On/Off"
+            Slider item=LivingRoomFloorLight label="Intensity"
+        }
     }
     Frame label="Office" {
         Switch item=OfficeDeskLight label="Desk Light"
-        Switch item=OfficeFloorLight label="Floor Light"
-        Colorpicker item=OfficeFloorLight label="Floor Light Color"
-        Selection item=OfficeFloorLightTemperature label="Floor Light Temperature" mappings=[100="2500K", 96="2750K", 92="3000K", 89="3200K", 84="3500K", 76="4000K", 69="4500K", 61="5000K", 55="5500K", 46="6000K"]
+        Text item=OfficeFloorLight label="Floor Light" icon="light" {
+            Switch item=OfficeFloorLight label="On/Off"
+            Slider item=OfficeFloorLight label="Intensity"
+            Colorpicker item=OfficeFloorLight label="Color"
+            Selection item=OfficeFloorLightTemperature label="Temperature" mappings=[100="2500K", 96="2750K", 92="3000K", 89="3200K", 84="3500K", 76="4000K", 69="4500K", 61="5000K", 55="5500K", 46="6000K"]
+        }
     }
     Frame label="Astro" {
         Text item=SunElevation label="Sun Elevation [%.2f]" icon="incline"
