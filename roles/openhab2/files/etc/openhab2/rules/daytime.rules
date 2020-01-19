@@ -25,12 +25,13 @@ then
     if (lastElevation > 5 && elevation <= 5) {
         LivingRoomFloorLight.sendCommand(100)
         OfficeFloorLightTemperature.sendCommand(96)
+        OfficeFloorLight.sendCommand(100)
     }
 end
 
 rule "Late Night"
 when
-    Time cron "0 0 2 * * ?"
+    Time cron "0 0 3 * * ?"
 then
     LivingRoomFloorLight.sendCommand(0)
     OfficeFloorLight.sendCommand(0)
@@ -38,7 +39,7 @@ end
 
 rule "Late Late Night"
 when
-    Time cron "0 0 3 * * ?"
+    Time cron "0 0 4 * * ?"
 then
     OfficeDeskLight.sendCommand(OFF)
 end
