@@ -10,12 +10,6 @@ Switch Unused2 { channel="zwave:device:controller:node4:switch_binary" }
 Switch Unused3 { channel="zwave:device:controller:node7:switch_binary" }
 Switch Unused4 { channel="zwave:device:controller:node6:switch_binary" }
 
-Number HvacTemperature { http="<[hvacStatus:60000:JSONPATH($..zones[0].temperature)]" }
-String HvacMode { http="<[hvacStatus:60000:JSONPATH($..zones[0].current_zone_mode)]" }
-String HvacStatus { http="<[hvacStatus:60000:JSONPATH($..zones[0]..system_status)]" }
-Number HvacHeatingSetpoint { http="<[hvacStatus:60000:JSONPATH($..zones[0].heating_setpoint)]" }
-Number HvacCoolingSetpoint { http="<[hvacStatus:60000:JSONPATH($..zones[0].cooling_setpoint)]" }
-
 Number SunElevation { channel="astro:sun:home:position#elevation" }
 Number SunAzimuth { channel="astro:sun:home:position#azimuth" }
 String Sunrise { channel="astro:sun:home:rise#start" }
