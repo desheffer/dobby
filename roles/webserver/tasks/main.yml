@@ -41,6 +41,22 @@
   tags:
     - configuration
 
+- name: Copy self.crt file
+  copy:
+    src: etc/nginx/self.crt
+    dest: /etc/nginx/self.crt
+  notify: Restart nginx
+  tags:
+    - configuration
+
+- name: Copy self.key file
+  copy:
+    src: etc/nginx/self.key
+    dest: /etc/nginx/self.key
+  notify: Restart nginx
+  tags:
+    - configuration
+
 - name: Link sites-enabled directory
   file:
     path: /etc/nginx/sites-enabled
