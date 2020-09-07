@@ -14,6 +14,9 @@ sitemap default label="Main Menu" {
             Selection item=OfficeFloorLightTemperature label="Temperature" mappings=[100="2500K", 96="2750K", 92="3000K", 89="3200K", 84="3500K", 76="4000K", 69="4500K", 61="5000K", 55="5500K", 46="6000K"]
         }
     }
+    Frame label="Other" {
+        Switch item=Portable
+    }
     Frame label="Astro" {
         Text item=SunElevation label="Sun Elevation [%.2f]" icon="incline"
         Text item=SunAzimuth label="Sun Azimuth [%.2f]" icon="incline"
