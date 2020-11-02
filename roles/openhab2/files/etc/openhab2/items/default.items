@@ -1,6 +1,5 @@
 String VoiceCommand
 
-Switch OfficeDeskLight { channel="zwave:device:controller:node3:switch_binary" }
 Dimmer LivingRoomFloorLight { channel="zwave:device:controller:node5:switch_dimmer" }
 Color OfficeFloorLight { channel="lifx:colorlight:D073D52FEA35:color" }
 Dimmer OfficeFloorLightTemperature { channel="lifx:colorlight:D073D52FEA35:temperature" }

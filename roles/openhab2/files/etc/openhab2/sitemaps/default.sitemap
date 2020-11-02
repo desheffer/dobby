@@ -6,7 +6,6 @@ sitemap default label="Main Menu" {
         }
     }
     Frame label="Office" {
-        Switch item=OfficeDeskLight label="Desk Light"
         Text item=OfficeFloorLight label="Floor Light" icon="light" {
             Switch item=OfficeFloorLight label="On/Off"
             Slider item=OfficeFloorLight label="Intensity"

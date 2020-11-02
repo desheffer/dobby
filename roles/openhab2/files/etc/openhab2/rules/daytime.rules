@@ -16,11 +16,6 @@ then
         return true
     }
 
-    // Sunset at 15 degrees
-    if (lastElevation > 15 && elevation <= 15) {
-        OfficeDeskLight.sendCommand(ON)
-    }
-
     // Sunset at 5 degrees
     if (lastElevation > 5 && elevation <= 5) {
         LivingRoomFloorLight.sendCommand(100)
@@ -35,11 +30,4 @@ when
 then
     LivingRoomFloorLight.sendCommand(0)
     OfficeFloorLight.sendCommand(0)
-end
-
-rule "Late Late Night"
-when
-    Time cron "0 0 4 * * ?"
-then
-    OfficeDeskLight.sendCommand(OFF)
 end
