@@ -16,8 +16,8 @@
 - name: Install openHAB 2 and addons
   apt:
     name:
-      - openhab2=2.4.*
-      - openhab2-addons=2.4.*
+      - openhab2=2.5.*
+      - openhab2-addons=2.5.*
     force: yes
 
 - name: Add openhab user to the dialout group
