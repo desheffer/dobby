@@ -1,0 +1,17 @@
+import org.openhab.core.library.types.*
+import org.openhab.core.persistence.*
+import org.openhab.model.script.actions.*
+
+rule "Plant Light On"
+when
+    Time cron "0 0 10 * * ?"
+then
+    OfficePlantLight.sendCommand(ON)
+end
+
+rule "Plant Light Off"
+when
+    Time cron "0 0 0 * * ?"
+then
+    OfficePlantLight.sendCommand(OFF)
+end
