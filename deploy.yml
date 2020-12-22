@@ -5,6 +5,4 @@
   become: true
   roles:
     - common
-    - ddns
     - openhab2
-    - webserver
